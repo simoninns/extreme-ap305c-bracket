@@ -132,7 +132,21 @@ module clamp_springs()
             }
 
             // Draw the actual springs
-            move([0,0,7]) tube(h=1, od=86, id=74); // 8 mm thick
+            difference() {
+                move([0,0,7]) tube(h=1, od=86, id=74); // 8 mm thick
+
+                rotate([0,0,60]) {
+                    move([0,50,6]) rotate([90,0,0]) prismoid(size1=[9,8], size2=[0,8], h=50);
+                }
+
+                rotate([0,0,(360/3) + 60]) {
+                    move([0,50,6]) rotate([90,0,0]) prismoid(size1=[9,8], size2=[0,8], h=50);
+                }
+
+                rotate([0,0,(-360/3 + 60)]) {
+                    move([0,50,6]) rotate([90,0,0]) prismoid(size1=[9,8], size2=[0,8], h=50);
+                }
+            }
         }
 
         // Red dot marker point
