@@ -33,8 +33,8 @@ module guide_pin()
 {
     // Centre guide ring
     difference() {
-        move([0,0,2]) cyl(l=2, d=27, center=false);
-        move([0,0,1]) cyl(l=4, d=25, center=false);
+        move([0,0,1]) cyl(l=4, d=27, center=false);
+        move([0,0,1]) cyl(l=6, d=25, center=false);
     }
 
     // Centre guide cone
@@ -45,10 +45,7 @@ module outer_lip()
 {
     difference() {
         // Main outer lip
-        difference() {
-            move([0,0,0]) cyl(l=8, d=100, center=false);
-            move([0,0,-1]) cyl(l=10, d=86, center=false);
-        }
+        tube(h=8, od=100, id=92); // 4 mm thick
 
         // Cut out 1
         rotate([0,0,0]) {
@@ -65,79 +62,82 @@ module outer_lip()
             move([0,50,4]) rotate([90,0,0]) prismoid(size1=[20,10], size2=[0,10], h=50);
         }
     }
+
+    // inner lip
+    tube(h=8, od=92, id=88); // 2 mm thick
 }
 
 module central_part()
 {
     difference() {
-        move([0,0,0]) cyl(l=8, d=70, center=false);
-        move([0,0,3]) cyl(l=6, d=68, center=false);
+        move([0,0,0]) cyl(l=8, d=72, center=false);
+        move([0,0,3]) cyl(l=6, d=70, center=false);
     }
 }
 
 module clamp_springs()
 {
-    // Large solid parts
     difference() {
         union() {
-            rotate([0,0,0]) {
-                move([0,50,4]) rotate([90,0,0]) prismoid(size1=[34,8], size2=[0,8], h=50);
+            // Large solid parts
+            difference() {
+                union() {
+                    rotate([0,0,0]) {
+                        move([0,50,4]) rotate([90,0,0]) prismoid(size1=[34,8], size2=[0,8], h=50);
+                    }
+
+                    rotate([0,0,360/3]) {
+                        move([0,50,4]) rotate([90,0,0]) prismoid(size1=[34,8], size2=[0,8], h=50);
+                    }
+
+                    rotate([0,0,-360/3]) {
+                        move([0,50,4]) rotate([90,0,0]) prismoid(size1=[34,8], size2=[0,8], h=50);
+                    }
+                }
+
+                // Inner cutout
+                move([0,0,-2]) cyl(l=12, d=72, center=false);
+
+                // outer cutout
+                difference() {
+                    move([0,0,-2]) cyl(l=12, d=110, center=false);
+                    move([0,0,-3]) cyl(l=14, d=88, center=false);
+                }
             }
 
-            rotate([0,0,360/3]) {
-                move([0,50,4]) rotate([90,0,0]) prismoid(size1=[34,8], size2=[0,8], h=50);
+            // Small solid parts
+            difference() {
+                union() {
+                    rotate([0,0,60]) {
+                        move([0,50,4]) rotate([90,0,0]) prismoid(size1=[7,8], size2=[0,8], h=50);
+                    }
+
+                    rotate([0,0,(360/3) + 60]) {
+                        move([0,50,4]) rotate([90,0,0]) prismoid(size1=[7,8], size2=[0,8], h=50);
+                    }
+
+                    rotate([0,0,(-360/3 + 60)]) {
+                        move([0,50,4]) rotate([90,0,0]) prismoid(size1=[7,8], size2=[0,8], h=50);
+                    }
+                }
+
+                // Inner cutout
+                move([0,0,-2]) cyl(l=12, d=72, center=false);
+
+                // outer cutout
+                difference() {
+                    move([0,0,-2]) cyl(l=12, d=110, center=false);
+                    move([0,0,-3]) cyl(l=14, d=88, center=false);
+                }
             }
 
-            rotate([0,0,-360/3]) {
-                move([0,50,4]) rotate([90,0,0]) prismoid(size1=[34,8], size2=[0,8], h=50);
-            }
-        }
-
-        // Inner cutout
-        move([0,0,-2]) cyl(l=12, d=70, center=false);
-
-        // outer cutout
-        difference() {
-            move([0,0,-2]) cyl(l=12, d=107, center=false);
-            move([0,0,-3]) cyl(l=14, d=89, center=false);
+            // Draw the actual springs
+            move([0,0,7]) tube(h=1, od=86, id=74); // 8 mm thick
         }
 
         // Red dot marker point
         move([0,39.5,7]) cyl(l=2, d=4, center=false);
     }
-
-    // Small solid parts
-    difference() {
-        union() {
-            rotate([0,0,60]) {
-                move([0,50,4]) rotate([90,0,0]) prismoid(size1=[7,8], size2=[0,8], h=50);
-            }
-
-            rotate([0,0,(360/3) + 60]) {
-                move([0,50,4]) rotate([90,0,0]) prismoid(size1=[7,8], size2=[0,8], h=50);
-            }
-
-            rotate([0,0,(-360/3 + 60)]) {
-                move([0,50,4]) rotate([90,0,0]) prismoid(size1=[7,8], size2=[0,8], h=50);
-            }
-        }
-
-        // Inner cutout
-        move([0,0,-2]) cyl(l=12, d=70, center=false);
-
-        // outer cutout
-        difference() {
-            move([0,0,-2]) cyl(l=12, d=107, center=false);
-            move([0,0,-3]) cyl(l=14, d=89, center=false);
-        }
-    }
-
-    // Draw the actual springs
-    difference() {
-        move([0,0,7]) cyl(l=1, d=72+12, center=false);
-        move([0,0,-3]) cyl(l=14, d=72, center=false);
-    }
-
 }
 
 module bracket()
