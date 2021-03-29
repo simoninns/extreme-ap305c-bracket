@@ -31,15 +31,15 @@ module large_dividers()
     difference() {
         union() {
             rotate([0,0,0]) {
-                move([0,50,4]) rotate([90,0,0]) prismoid(size1=[34,8], size2=[0,8], h=50);
+                move([0,50,4]) rotate([90,0,0]) prismoid(size1=[50,8], size2=[0,8], h=50);
             }
 
             rotate([0,0,360/3]) {
-                move([0,50,4]) rotate([90,0,0]) prismoid(size1=[34,8], size2=[0,8], h=50);
+                move([0,50,4]) rotate([90,0,0]) prismoid(size1=[50,8], size2=[0,8], h=50);
             }
 
             rotate([0,0,-360/3]) {
-                move([0,50,4]) rotate([90,0,0]) prismoid(size1=[34,8], size2=[0,8], h=50);
+                move([0,50,4]) rotate([90,0,0]) prismoid(size1=[50,8], size2=[0,8], h=50);
             }
         }
 
@@ -48,7 +48,7 @@ module large_dividers()
 
         // outer cutout
         difference() {
-            move([0,0,-2]) cyl(l=12, d=110, center=false);
+            move([0,0,-2]) cyl(l=12, d=120, center=false);
             move([0,0,-3]) cyl(l=14, d=88, center=false);
         }
     }
@@ -88,31 +88,31 @@ module lever_bumps()
         union() {
             rotate([0,0,0]) {
                 rotate([0,0,5.1]) {
-                    move([2,-40,8]) rotate([90,0,0]) cyl(h=8, d=4);
+                    move([2.5,-40,8]) rotate([90,0,0]) cyl(h=8, d=5);
                 }
 
                 rotate([0,0,-5.1]) {
-                    move([-2,-40,8]) rotate([90,0,0]) cyl(h=8, d=4);
+                    move([-2.5,-40,8]) rotate([90,0,0]) cyl(h=8, d=5);
                 }
             }
 
             rotate([0,0,(360/3)]) {
                 rotate([0,0,5.1]) {
-                    move([2,-40,8]) rotate([90,0,0]) cyl(h=8, d=4);
+                    move([2.5,-40,8]) rotate([90,0,0]) cyl(h=8, d=5);
                 }
 
                 rotate([0,0,-5.1]) {
-                    move([-2,-40,8]) rotate([90,0,0]) cyl(h=8, d=4);
+                    move([-2.5,-40,8]) rotate([90,0,0]) cyl(h=8, d=5);
                 }
             }
 
             rotate([0,0,(-360/3)]) {
                 rotate([0,0,5.1]) {
-                    move([2,-40,8]) rotate([90,0,0]) cyl(h=8, d=4);
+                    move([2.5,-40,8]) rotate([90,0,0]) cyl(h=8, d=5);
                 }
 
                 rotate([0,0,-5.1]) {
-                    move([-2,-40,8]) rotate([90,0,0]) cyl(h=8, d=4);
+                    move([-2.5,-40,8]) rotate([90,0,0]) cyl(h=8, d=5);
                 }
             }
         }
@@ -147,7 +147,7 @@ module levers()
 {
     difference() {
         // Render the material for the levers
-        move([0,0,7]) tube(h=1, od=86, id=74); // 8 mm thick
+        move([0,0,6]) tube(h=2, od=86, id=74); // 8 mm thick
 
         // Cut out the end of each lever to form a 1mm gap
         rotate([0,0,60]) {
