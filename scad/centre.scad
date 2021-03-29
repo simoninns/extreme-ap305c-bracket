@@ -1,6 +1,6 @@
 /************************************************************************
 
-	main.scad
+	centre.scad
     
 	Extreme Networks AP305C Bracket
     Copyright (C) 2021 Simon Inns
@@ -26,20 +26,29 @@ include <BOSL/constants.scad>
 use <BOSL/transforms.scad>
 use <BOSL/shapes.scad>
 
-// Local includes
-include <springs.scad>
-include <centre.scad>
-include <lip.scad>
 
-// Rendering quality
-$fn = 100;
-
-module bracket()
+module central_part()
 {
-    centre();
-    lip();
-    springs();
+    difference() {
+        move([0,0,0]) cyl(l=8, d=72, center=false);
+        move([0,0,3]) cyl(l=6, d=70, center=false);
+    }
 }
 
-// Main
-bracket();
+module guide_pin()
+{
+    // Centre guide ring
+    difference() {
+        move([0,0,1]) cyl(l=4, d=27, center=false);
+        move([0,0,1]) cyl(l=6, d=25, center=false);
+    }
+
+    // Centre guide cone
+    move([0,0,3]) cyl(l=9, d1=7, d2=6, center=false);
+}
+
+module centre()
+{
+    central_part();
+    guide_pin();
+}

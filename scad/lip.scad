@@ -1,6 +1,6 @@
 /************************************************************************
 
-	main.scad
+	lip.scad
     
 	Extreme Networks AP305C Bracket
     Copyright (C) 2021 Simon Inns
@@ -26,20 +26,28 @@ include <BOSL/constants.scad>
 use <BOSL/transforms.scad>
 use <BOSL/shapes.scad>
 
-// Local includes
-include <springs.scad>
-include <centre.scad>
-include <lip.scad>
-
-// Rendering quality
-$fn = 100;
-
-module bracket()
+module lip()
 {
-    centre();
-    lip();
-    springs();
-}
+    difference() {
+        // Main outer lip
+        tube(h=8, od=100, id=92); // 4 mm thick
 
-// Main
-bracket();
+        // Cut out 1
+        rotate([0,0,0]) {
+            move([0,50,4]) rotate([90,0,0]) prismoid(size1=[20,10], size2=[0,10], h=50);
+        }
+
+        // Cut out 2
+        rotate([0,0,360/3]) {
+            move([0,50,4]) rotate([90,0,0]) prismoid(size1=[20,10], size2=[0,10], h=50);
+        }
+
+        // Cut out 3
+        rotate([0,0,-360/3]) {
+            move([0,50,4]) rotate([90,0,0]) prismoid(size1=[20,10], size2=[0,10], h=50);
+        }
+    }
+
+    // inner lip
+    tube(h=8, od=92, id=88); // 2 mm thick
+}
