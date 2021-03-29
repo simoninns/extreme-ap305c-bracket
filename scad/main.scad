@@ -30,6 +30,7 @@ use <BOSL/shapes.scad>
 include <springs.scad>
 include <centre.scad>
 include <lip.scad>
+include <screwmounts.scad>
 
 // Rendering quality
 $fn = 100;
@@ -39,6 +40,8 @@ module bracket()
     //centre();
     springs();
     lip();
+
+    screw_mounts();
 }
 
 // Main

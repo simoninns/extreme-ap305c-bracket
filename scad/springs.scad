@@ -191,11 +191,16 @@ module springs()
             levers();
 
             // Edges
-            inner_edge();
+            //inner_edge();
             outer_edge();
         }
 
         // Remove some material from underneath
         move([0,0,-3]) tube(h=8, od=88, id=72);
+
+        // Red dot marker
+        move([0,40,8]) cyl(h=16, d=3);
     }
+
+    
 }
