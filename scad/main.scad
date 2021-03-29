@@ -36,7 +36,7 @@ $fn = 100;
 
 module bracket()
 {
-    centre();
+    //centre();
     springs();
     lip();
 }

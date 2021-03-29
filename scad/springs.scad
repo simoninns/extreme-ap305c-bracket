@@ -147,7 +147,7 @@ module levers()
 {
     difference() {
         // Render the material for the levers
-        move([0,0,6]) tube(h=2, od=86, id=74); // 8 mm thick
+        move([0,0,6]) tube(h=2, od=86, id=74);
 
         // Cut out the end of each lever to form a 1mm gap
         rotate([0,0,60]) {
@@ -164,7 +164,12 @@ module levers()
     }
 
     // Add a raised area to the end of each lever
-    lever_bumps();
+    //lever_bumps();
+}
+
+module inner_edge()
+{
+    tube(h=8, od=72, id=70);
 }
 
 module outer_edge()
@@ -185,11 +190,12 @@ module springs()
             // Draw the levers
             levers();
 
-            // Outer edge
+            // Edges
+            inner_edge();
             outer_edge();
         }
 
-        // Red dot marker point indentation
-        move([0,39.5,7]) cyl(l=2, d=4, center=false);
+        // Remove some material from underneath
+        move([0,0,-3]) tube(h=8, od=88, id=72);
     }
 }
