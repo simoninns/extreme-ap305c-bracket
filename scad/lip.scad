@@ -26,11 +26,42 @@ include <BOSL/constants.scad>
 use <BOSL/transforms.scad>
 use <BOSL/shapes.scad>
 
-module lip()
+module solid_parts()
+{
+    difference() {
+        union() {
+            cutWidth = 37;
+            rotation = 31.5;
+
+            // Cut out 1
+            rotate([0,0,0 + rotation]) {
+                move([0,50,4]) rotate([90,0,0]) prismoid(size1=[cutWidth,8], size2=[0,8], h=50);
+            }
+
+            // Cut out 2
+            rotate([0,0,(360/3) + rotation]) {
+                move([0,50,4]) rotate([90,0,0]) prismoid(size1=[cutWidth,8], size2=[0,8], h=50);
+            }
+
+            // Cut out 3
+            rotate([0,0,(-360/3) + rotation]) {
+                move([0,50,4]) rotate([90,0,0]) prismoid(size1=[cutWidth,8], size2=[0,8], h=50);
+            }
+        }
+
+        // Inner cutout
+        move([0,0,-1]) cyl(h=10, d=90, center=false);
+
+        // Outer cutout
+        move([0,0,-1]) tube(h=10, od=110, id=100);
+    }
+}
+
+module upper_lip()
 {
     difference() {
         // Main outer lip
-        tube(h=8, od=100, id=92); // 4 mm thick
+        move([0,0,6]) tube(h=2, od=100, id=90);
 
         // Cut out 1
         rotate([0,0,0]) {
@@ -47,7 +78,10 @@ module lip()
             move([0,50,4]) rotate([90,0,0]) prismoid(size1=[20,10], size2=[0,10], h=50);
         }
     }
+}
 
-    // inner lip
-    tube(h=8, od=92, id=88); // 2 mm thick
+module lip()
+{
+    upper_lip();
+    solid_parts();
 }

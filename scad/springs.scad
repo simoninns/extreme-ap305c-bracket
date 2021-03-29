@@ -167,6 +167,11 @@ module levers()
     lever_bumps();
 }
 
+module outer_edge()
+{
+    tube(h=8, od=90, id=88);
+}
+
 module springs()
 {
     difference() {
@@ -179,6 +184,9 @@ module springs()
 
             // Draw the levers
             levers();
+
+            // Outer edge
+            outer_edge();
         }
 
         // Red dot marker point indentation
