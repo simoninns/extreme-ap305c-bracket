@@ -31,8 +31,8 @@ module mount()
     difference() {
         // Screw holder
         union() {
-            tube(h=8, id=6, od=10);
-            tube(h=3, id=3, od=6);
+            tube(h=8, id=8, od=12);
+            tube(h=3, id=4, od=8);
         }
     }
 }
@@ -54,8 +54,8 @@ module screw_mounts()
             difference() {
                 union() {
                     rotate([0,0,-30]) {
-                        move([0,32,0]) mount();
-                        move([0,-32,0]) mount();
+                        move([0,30,0]) mount();
+                        move([0,-30,0]) mount();
                     }
 
                     rotate([0,0,-30 - 90]) {
@@ -74,8 +74,8 @@ module screw_mounts()
 
         // 8mm bump-on cut outs
         rotate([0,0,-30]) {
-            move([0,32,0]) cyl(h=1, d=8.5);
-            move([0,-32,0]) cyl(h=1, d=8.5);
+            move([0,30,0]) cyl(h=1, d=8.5);
+            move([0,-30,0]) cyl(h=1, d=8.5);
         }
 
         rotate([0,0,-30 - 90]) {

@@ -103,43 +103,52 @@ module levers()
 
         // Add a mounting hole to the end of each lever
         rotate([0,0,60]) {
-            rotate([0,0, 10]) move([0,40,6]) cube([4,3,10], center=true);
-            rotate([0,0,-10]) move([0,40,6]) cube([4,3,10], center=true);
+            rotate([0,0, 10]) move([0,40,6]) {
+                cube([4,3,10], center=true);
+                move([0,2,0]) cube([2.75,2,10], center=true);
+            }
+            rotate([0,0,-10]) move([0,40,6]) {
+                cube([4,3,10], center=true);
+                move([0,2,0]) cube([2.75,2,10], center=true);
+            }
         }
         rotate([0,0,(360/3) + 60]) {
-            rotate([0,0, 10]) move([0,40,6]) cube([4,3,10], center=true);
-            rotate([0,0,-10]) move([0,40,6]) cube([4,3,10], center=true);
+            rotate([0,0, 10]) move([0,40,6]) {
+                cube([4,3,10], center=true);
+                move([0,2,0]) cube([2.75,2,10], center=true);
+            }
+            rotate([0,0,-10]) move([0,40,6]) {
+                cube([4,3,10], center=true);
+                move([0,2,0]) cube([2.75,2,10], center=true);
+            }
         }
         rotate([0,0,(-360/3 + 60)]) {
-            rotate([0,0, 10]) move([0,40,6]) cube([4,3,10], center=true);
-            rotate([0,0,-10]) move([0,40,6]) cube([4,3,10], center=true);
+            rotate([0,0, 10]) move([0,40,6]) {
+                cube([4,3,10], center=true);
+                move([0,2,0]) cube([2.75,2,10], center=true);
+            }
+            rotate([0,0,-10]) move([0,40,6]) {
+                cube([4,3,10], center=true);
+                move([0,2,0]) cube([2.75,2,10], center=true);
+            }
         }
     }
 }
 
 module bump()
 {
-    difference() {
-        union() {
-            // Shaft
-            move([0,0,0.5]) cube([3.75,2.75,3.5], center=true);
+    // Shaft
+    move([0,0,0.5]) cube([3.75,2.75,3.5], center=true);
 
-            // Clips
-            move([2,0,-0.75]) cube([0.5,2.75,1], center=true);
-            move([-2,0,-0.75]) cube([0.5,2.75,1], center=true);
-        }
-
-        // Centre bit
-        move([0,0,-0.5]) cube([1.5,3,3], center=true);
-    }
+    // Clips
+    move([0,0,-0.75]) cube([5,2.75,1], center=true);
 
     // Head
-    move([0,0,2]) prismoid(size1=[6,5], size2=[3,3], h=2);
+    move([0,0,2]) prismoid(size1=[6,2.75], size2=[3,2.75], h=2);
 }
 
 module lever_bumps()
 {
-    // Add a mounting hole to the end of each lever
     rotate([0,0,60]) {
         rotate([0,0, 10]) move([0,40,6]) bump();
         rotate([0,0,-10]) move([0,40,6]) bump();
@@ -156,14 +165,16 @@ module lever_bumps()
 
 module lever_bumps_print()
 {
-    move([0,-22,0]) {
-        move([-4,0,4]) bump();
-        move([-4,6,4]) bump();
-        move([-4,-6,4]) bump();
+    move([-5,28,6.5]) {
+        rotate([90,0,0]) {
+            move([7,0,0]) bump();
+            move([0,0,0]) bump();
+            move([-7,0,0]) bump();
 
-        move([4,0,4]) bump();
-        move([4,6,4]) bump();
-        move([4,-6,4]) bump();
+            move([7,0,7]) bump();
+            move([0,0,7]) bump();
+            move([-7,0,7]) bump();
+        }
     }
 }
 
