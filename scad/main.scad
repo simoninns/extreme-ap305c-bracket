@@ -37,7 +37,9 @@ $fn = 100;
 
 module bracket()
 {
+    // Centre is replaced with screw mounts
     //centre();
+
     springs();
     lip();
 

@@ -82,67 +82,6 @@ module small_dividers()
     }
 }
 
-module lever_bumps()
-{
-    difference() {
-        union() {
-            rotate([0,0,0]) {
-                rotate([0,0,5.1]) {
-                    move([2.5,-40,8]) rotate([90,0,0]) cyl(h=8, d=5);
-                }
-
-                rotate([0,0,-5.1]) {
-                    move([-2.5,-40,8]) rotate([90,0,0]) cyl(h=8, d=5);
-                }
-            }
-
-            rotate([0,0,(360/3)]) {
-                rotate([0,0,5.1]) {
-                    move([2.5,-40,8]) rotate([90,0,0]) cyl(h=8, d=5);
-                }
-
-                rotate([0,0,-5.1]) {
-                    move([-2.5,-40,8]) rotate([90,0,0]) cyl(h=8, d=5);
-                }
-            }
-
-            rotate([0,0,(-360/3)]) {
-                rotate([0,0,5.1]) {
-                    move([2.5,-40,8]) rotate([90,0,0]) cyl(h=8, d=5);
-                }
-
-                rotate([0,0,-5.1]) {
-                    move([-2.5,-40,8]) rotate([90,0,0]) cyl(h=8, d=5);
-                }
-            }
-        }
-
-        // Remove the lower side of the cylinder
-        move([0,0,4]) tube(h=4, od=90, id=70);
-
-        // Trim the outer edges
-        move([0,0,4]) tube(h=8, od=90, id=86);
-
-        // Trim the inner edges
-        move([0,0,4]) tube(h=8, od=74, id=70);
-
-        // Trim the front edges
-        union() {
-            rotate([0,0,60]) {
-                move([0,50,8]) rotate([90,0,0]) prismoid(size1=[9,8], size2=[0,8], h=50);
-            }
-
-            rotate([0,0,(360/3) + 60]) {
-                move([0,50,8]) rotate([90,0,0]) prismoid(size1=[9,8], size2=[0,8], h=50);
-            }
-
-            rotate([0,0,(-360/3 + 60)]) {
-                move([0,50,8]) rotate([90,0,0]) prismoid(size1=[9,8], size2=[0,8], h=50);
-            }
-        }
-    }
-}
-
 module levers()
 {
     difference() {
@@ -161,15 +100,21 @@ module levers()
         rotate([0,0,(-360/3 + 60)]) {
             move([0,50,6]) rotate([90,0,0]) prismoid(size1=[9,8], size2=[0,8], h=50);
         }
+
+        // Add a mounting hole to the end of each lever
+        rotate([0,0,60]) {
+            rotate([0,0, 10]) move([0,40,6]) cube([4,3,10], center=true);
+            rotate([0,0,-10]) move([0,40,6]) cube([4,3,10], center=true);
+        }
+        rotate([0,0,(360/3) + 60]) {
+            rotate([0,0, 10]) move([0,40,6]) cube([4,3,10], center=true);
+            rotate([0,0,-10]) move([0,40,6]) cube([4,3,10], center=true);
+        }
+        rotate([0,0,(-360/3 + 60)]) {
+            rotate([0,0, 10]) move([0,40,6]) cube([4,3,10], center=true);
+            rotate([0,0,-10]) move([0,40,6]) cube([4,3,10], center=true);
+        }
     }
-
-    // Add a raised area to the end of each lever
-    //lever_bumps();
-}
-
-module inner_edge()
-{
-    tube(h=8, od=72, id=70);
 }
 
 module outer_edge()
@@ -191,7 +136,6 @@ module springs()
             levers();
 
             // Edges
-            //inner_edge();
             outer_edge();
         }
 
@@ -201,6 +145,4 @@ module springs()
         // Red dot marker
         move([0,40,8]) cyl(h=16, d=3);
     }
-
-    
 }

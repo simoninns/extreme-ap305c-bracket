@@ -32,7 +32,7 @@ module mount()
         // Screw holder
         union() {
             tube(h=8, id=6, od=10);
-            tube(h=4, id=3, od=6);
+            tube(h=3, id=3, od=6);
         }
     }
 }
@@ -42,7 +42,7 @@ module pad_mount()
     difference() {
         // Screw holder
         union() {
-            cyl(h=3, d=10, center=false);
+            cyl(h=8, d=10, center=false);
         }
     }
 }
