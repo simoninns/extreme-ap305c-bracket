@@ -74,9 +74,7 @@ module solid_parts()
 
         // Outer cutout
         move([0,0,-1]) tube(h=10, od=112, id=102);
-    }
-
-            
+    }   
 }
 
 module slides_cutout() 

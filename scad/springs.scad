@@ -44,7 +44,7 @@ module large_dividers()
         }
 
         // Inner cutout
-        move([0,0,-2]) cyl(l=12, d=72, center=false);
+        move([0,0,-2]) cyl(l=12, d=70, center=false); // should be 72
 
         // outer cutout
         difference() {
@@ -72,7 +72,7 @@ module small_dividers()
         }
 
         // Inner cutout
-        move([0,0,-2]) cyl(l=12, d=72, center=false);
+        move([0,0,-2]) cyl(l=12, d=72.01, center=false);
 
         // outer cutout
         difference() {
@@ -140,9 +140,11 @@ module springs()
         }
 
         // Remove some material from underneath
-        move([0,0,-3]) tube(h=8, od=88, id=72);
+        move([0,0,-3]) tube(h=8, od=88.01, id=50);
 
         // Red dot marker
         move([0,40,8]) cyl(h=16, d=3);
     }
+
+    
 }

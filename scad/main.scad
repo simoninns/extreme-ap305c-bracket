@@ -28,7 +28,6 @@ use <BOSL/shapes.scad>
 
 // Local includes
 include <springs.scad>
-include <centre.scad>
 include <lip.scad>
 include <screwmounts.scad>
 
@@ -37,13 +36,9 @@ $fn = 100;
 
 module bracket()
 {
-    // Centre is replaced with screw mounts
-    //centre();
-
+    screw_mounts();
     springs();
     lip();
-
-    screw_mounts();
 }
 
 // Main
