@@ -117,6 +117,56 @@ module levers()
     }
 }
 
+module bump()
+{
+    difference() {
+        union() {
+            // Shaft
+            move([0,0,0.5]) cube([3.75,2.75,3.5], center=true);
+
+            // Clips
+            move([2,0,-0.75]) cube([0.5,2.75,1], center=true);
+            move([-2,0,-0.75]) cube([0.5,2.75,1], center=true);
+        }
+
+        // Centre bit
+        move([0,0,-0.5]) cube([1.5,3,3], center=true);
+    }
+
+    // Head
+    move([0,0,2]) prismoid(size1=[6,5], size2=[3,3], h=2);
+}
+
+module lever_bumps()
+{
+    // Add a mounting hole to the end of each lever
+    rotate([0,0,60]) {
+        rotate([0,0, 10]) move([0,40,6]) bump();
+        rotate([0,0,-10]) move([0,40,6]) bump();
+    }
+    rotate([0,0,(360/3) + 60]) {
+        rotate([0,0, 10]) move([0,40,6]) bump();
+        rotate([0,0,-10]) move([0,40,6]) bump();
+    }
+    rotate([0,0,(-360/3 + 60)]) {
+        rotate([0,0, 10]) move([0,40,6]) bump();
+        rotate([0,0,-10]) move([0,40,6]) bump();
+    }
+}
+
+module lever_bumps_print()
+{
+    move([0,-22,0]) {
+        move([-4,0,4]) bump();
+        move([-4,6,4]) bump();
+        move([-4,-6,4]) bump();
+
+        move([4,0,4]) bump();
+        move([4,6,4]) bump();
+        move([4,-6,4]) bump();
+    }
+}
+
 module outer_edge()
 {
     tube(h=8, od=90, id=88);
@@ -146,5 +196,5 @@ module springs()
         move([0,40,8]) cyl(h=16, d=3);
     }
 
-    
+    lever_bumps_print();
 }
