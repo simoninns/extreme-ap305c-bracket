@@ -22,3 +22,7 @@ The model has been printed and tested on the Prusa MK3S/MMU2S printer using PETG
 ## Assembly
 
 Place each one of the lever bumps into the lever recess sideways.  Twist level bump through 90 degrees.  The bump should lock into place.  This is easier if you use a pair of small flat-nosed pliers.
+
+## Disclaimer
+
+Please note that this bracket is the personal work of the author.  This bracket is not associated with nor endorsed by Extreme Networks.
