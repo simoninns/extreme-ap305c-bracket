@@ -21,7 +21,7 @@ The model has been printed and tested on the Prusa MK3S/MMU2S printer using PETG
 
 ## Assembly
 
-Place each one of the lever bumps into the lever recess sideways.  Twist level bump through 90 degrees.  The bump should lock into place.  This is easier if you use a pair of small flat-nosed pliers.
+Place each one of the lever bumps into the lever recess sideways through the provided gap.  Twist lever bump through 90 degrees.  The bump should lock into place.  This is easier if you use a pair of small flat-nosed pliers (be careful not to squeeze the pieces too hard when handling with the pliers).
 
 ## Disclaimer
 
