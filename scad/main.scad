@@ -41,5 +41,5 @@ module bracket()
     lip();
 }
 
-// Main
+// Position the bracket ready for 3D printing
 move([0,0,8]) rotate([0,180,0]) bracket();

@@ -141,39 +141,23 @@ module bump()
     move([0,0,0.5]) cube([3.75,2.75,3.5], center=true);
 
     // Clips
-    move([0,0,-0.75]) cube([5,2.75,1], center=true);
+    move([0,0,-1.25]) cube([5,2.75,2], center=true);
 
     // Head
-    move([0,0,2]) prismoid(size1=[6,2.75], size2=[3,2.75], h=2);
-}
-
-module lever_bumps()
-{
-    rotate([0,0,60]) {
-        rotate([0,0, 10]) move([0,40,6]) bump();
-        rotate([0,0,-10]) move([0,40,6]) bump();
-    }
-    rotate([0,0,(360/3) + 60]) {
-        rotate([0,0, 10]) move([0,40,6]) bump();
-        rotate([0,0,-10]) move([0,40,6]) bump();
-    }
-    rotate([0,0,(-360/3 + 60)]) {
-        rotate([0,0, 10]) move([0,40,6]) bump();
-        rotate([0,0,-10]) move([0,40,6]) bump();
-    }
+    move([0,0,2]) prismoid(size1=[6,2.75], size2=[3,2.75], h=3);
 }
 
 module lever_bumps_print()
 {
-    move([-5,28,6.5]) {
+    move([-5,27,6.5]) {
         rotate([90,0,0]) {
             move([7,0,0]) bump();
             move([0,0,0]) bump();
             move([-7,0,0]) bump();
 
-            move([7,0,7]) bump();
-            move([0,0,7]) bump();
-            move([-7,0,7]) bump();
+            move([7,0,9]) bump();
+            move([0,0,9]) bump();
+            move([-7,0,9]) bump();
         }
     }
 }
