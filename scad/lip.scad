@@ -178,6 +178,17 @@ module upper_lip()
 
 module lip()
 {
-    upper_lip();
-    solid_parts();
+    difference() {
+        union() {
+            upper_lip();
+            solid_parts();
+        }
+
+        // Mark the centre across the bracket - cable side
+        rotate([0,0,47]) move([-50,0,8.5]) cube([3,1,2], center=true);
+        rotate([0,0,47]) move([-46,0,8.5]) cube([3,1,2], center=true);
+
+        // Opposite side from cable
+        rotate([0,0,47]) move([50,0,8.5]) cube([3,1,2], center=true);
+    }
 }
