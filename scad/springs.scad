@@ -149,7 +149,7 @@ module bump()
 
 module lever_bumps_print()
 {
-    move([-5,27,6.5]) {
+    move([-5,27,6.625]) {
         rotate([90,0,0]) {
             move([7,0,0]) bump();
             move([0,0,0]) bump();
@@ -191,5 +191,6 @@ module springs()
         move([0,40,8]) cyl(h=16, d=3);
     }
 
+    // Add the lever bumps in print position
     lever_bumps_print();
 }
