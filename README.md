@@ -5,14 +5,20 @@ This project provides a 3D printable bracket for the Extreme Networks AP305C, AP
 
 Note: This project is GPLv3 open-source. The github repository for the model (containing the complete OpenSCAD project) can be found at https://github.com/simoninns/extreme-ap305c-bracket
 
+<img src="/images/ap305c_bracket_mount.jpg" width="800">
+
 The bracket provides two mounting points for wall or ceiling mounting using two screws (with appropriate wall plugs) which should be 3mm in diameter with 6mm flat heads.
 
 The bracket can also be used as a desk stand for the access points (to prevent scratching of desks and other surfaces).  Attach 4x 8mm 3M Bump-on feet to the 4 marked areas to keep the bracket steady and prevent surface damage.  When used as a desk stand the bracket does not cover the console cable connector on the base of the access point.
+
+<img src="/images/ap305c_bracket_desk.jpg" width="800">
 
 Note that the centre line of the AP is shown as two dashes for the cable-side and one dash for the opposite.  This marked line is to assist with aligning the bracket so the network cable output is in the correct place when the bracket is orientated with the red dot on the AP.
 
 ## Printing instructions
 The model has been printed and tested on the Prusa MK3S/MMU2S printer using PETG filament. All parts fit on a 20x20 printing bed.
+
+<img src="/images/ap305c_bracket_top.jpg" width="800">
 
 ### Recommended print settings
 
